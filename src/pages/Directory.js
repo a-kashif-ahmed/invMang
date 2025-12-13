@@ -17,7 +17,7 @@ function Directory() {
     subcategory: "",
     company: "",
     cost: 0,
-    selling: 0,
+    sellingPrice: 0,
     rack: "",
     threshold: 0,
   };
@@ -60,7 +60,10 @@ function Directory() {
     XLSX.utils.book_append_sheet(workbook, worksheet, "Inventory Directory");
     XLSX.writeFile(workbook, "inventory_directory.xlsx");
   }
-
+  const handleChange = (idx)=>{
+    setModalRows(dummyinventory[idx]);
+    setShowAddRow(true);
+  }
   const filteredInventory = dummyinventory.length > 0 ? dummyinventory.filter(
     (item) =>
       item.partNo.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -163,7 +166,7 @@ function Directory() {
               {filteredInventory.length === 0 ? (<tr  >
                 <td colSpan='9' ><p className="p-3 flex justify-center">No Items</p></td>
               </tr>) : filteredInventory.map((item, index) => (
-                <tr className="hover:bg-cyan-300 hover:text-black border-t">
+                <tr className="hover:bg-cyan-300 hover:text-black border-t" onDoubleClick={()=>handleChange(index)}>
                   <td className="p-4">{index + 1}</td>
                   <td className="p-4">{item.partNo}</td>
                   <td className="p-4">{item.partName}</td>

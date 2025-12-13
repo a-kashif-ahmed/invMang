@@ -65,7 +65,7 @@ function Purchases() {
                         </div>
                         <div
                             className="flex items-center gap-2 bg-cyan-300 cursor-pointer rounded-md hover:opacity-80 border-3 border-black shadow-md hover:shadow-xl "
-                            onClick={() => setShowAddRow(!showAddRow)}
+                            onClick={() => setShowAddRow(true)}
                         >
 
                             <span className="font-medium text-gray-700 p-2">+ Add Row</span>
@@ -105,7 +105,7 @@ function Purchases() {
 
                     </div>
                 </div>
-                {showAddRow && <AddRowModal emptyRow={purchaseRow} returnRows={handleReturnRows} onClose={() => { setShowAddRow(false);  setModalRows([]); }} />}
+                {showAddRow && <AddRowModal open={showAddRow} emptyRow={purchaseRow} returnRows={handleReturnRows} onClose={() => { setShowAddRow(false);  setModalRows([]); }} />}
 
                 <div className="bg-white shadow-lg rounded-xl overflow-hidden border">
                     <table className="w-full table-auto">

@@ -1,16 +1,17 @@
 import { useState,useEffect } from "react";
 
-function AddRowModal({ onClose, emptyRow, returnRows , availData = [] }) {
-  const [rows, setRows] = useState([]);
+function AddRowModal({ onClose, emptyRow, returnRows , availData = [], open }) {
+  const [rows, setRows] = useState(() =>
+  availData.length ? structuredClone(availData) : [{ ...emptyRow }]
+);
+//   useEffect(() => {
+//   console.log("MODAL MOUNTED");
+//   return () => console.log("MODAL UNMOUNTED");
+// }, []);
 
   // Initialize rows when modal opens
-  useEffect(() => {
-    if (availData.length > 0) {
-      setRows(availData);
-    } else {
-      setRows([{ ...emptyRow }]);
-    }
-  }, [availData, emptyRow]);
+ 
+
 
   const addNewRow = () => {
     setRows((prev) => [...prev, { ...emptyRow }]);

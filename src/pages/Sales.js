@@ -109,7 +109,7 @@ function Sales() {
 
                     </div>
                 </div>
-                {showAddRow && <AddRowModal emptyRow={purchaseRow} returnRows={handleReturnRows} onClose={() => setShowAddRow(false)} />}
+                { showAddRow && <AddRowModal open={showAddRow} emptyRow={purchaseRow} returnRows={handleReturnRows} onClose={() => setShowAddRow(false)} />}
 
                 <div className="bg-white shadow-lg rounded-xl overflow-hidden border">
                     <table className="w-full table-auto">
