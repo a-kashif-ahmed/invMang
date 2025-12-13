@@ -4,6 +4,7 @@ function TopNavBar() {
   const [dbStatus, setDbStatus] = useState('');
   useEffect(() => {
     const checkDB =() =>{fetch('http://localhost:8017/health').then(res => {
+      
       if (res.ok) {
         setDbStatus("Connected");
       } else {

@@ -51,7 +51,7 @@ function AddRowModal({ onClose, emptyRow, returnRows , availData = [] }) {
           </div>
 
           
-          <div className="mt-4 overflow-x-auto overflow-y-visible w-full">
+          <div className="mt-4 overflow-x-visible overflow-y-visible w-full">
 
             {rows.map((row, index) => (
               <div
