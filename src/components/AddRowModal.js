@@ -29,19 +29,14 @@ function AddRowModal({ onClose, emptyRow, returnRows , availData = [] }) {
       id="default-modal"
       tabIndex={-1}
       aria-hidden="true"
-      className="fixed inset-0 z-50 flex justify-center items-center bg-black/40"
+      className="absolute inset-0 z-50 flex justify-center items-center bg-black/40"
     >
       <div className="relative p-4 w-full">
         <div className="bg-white border rounded-xl shadow-lg p-6">
 
           
-          <div className="flex items-center justify-between border-b pb-4">
+          <div className=" flex items-center justify-between border-b pb-4">
             <h3 className="text-lg font-semibold">Add Inventory Item</h3>
-
-          </div>
-
-          
-          <div className="mt-4 flex justify-end">
             <button
               onClick={addNewRow}
               className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700"
@@ -51,7 +46,17 @@ function AddRowModal({ onClose, emptyRow, returnRows , availData = [] }) {
           </div>
 
           
-          <div className="mt-4 overflow-x-auto overflow-y-auto w-full">
+          {/* <div className="mt-4 flex justify-end">
+            <button
+              onClick={addNewRow}
+              className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700"
+            >
+              + Add Row
+            </button>
+          </div> */}
+
+          
+          <div className="mt-4 overflow-x-auto overflow-y-visible w-full">
 
             {rows.map((row, index) => (
               <div
