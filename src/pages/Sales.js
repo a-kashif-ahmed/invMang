@@ -42,9 +42,27 @@ function Sales() {
             item.partNo.toLowerCase().includes(searchTerm.toLowerCase()) ||
             item.partName.toLowerCase().includes(searchTerm.toLowerCase())
     ) : sales;
-    const handleReturnRows = (rowsMod) =>{
-    setSales((prev)=>[...prev,...rowsMod]);
-  }
+    const handleReturnRows = (rowsMod) => {
+  setSales((prev) => {
+    const updated = [...prev];
+
+    rowsMod.forEach((newRow) => {
+      const index = updated.findIndex(
+        (row) => row.partNo === newRow.partNo
+      );
+
+      if (index !== -1) {
+        // 🔁 UPDATE existing row
+        updated[index] = { ...updated[index], ...newRow };
+      } else {
+        // ➕ ADD new row
+        updated.push(newRow);
+      }
+    });
+
+    return updated;
+  });
+};
     return (
         <div className="min-h-screen bg-gray-100 pb-20">
             <TopNavBar />

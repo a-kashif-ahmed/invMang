@@ -22,9 +22,27 @@ function Purchases() {
     cost: 0,
   };
 
-  const handleReturnRows = (rowsMod) =>{
-    setPurchases((prev)=>[...prev,...rowsMod]);
-  }
+  const handleReturnRows = (rowsMod) => {
+  setPurchases((prev) => {
+    const updated = [...prev];
+
+    rowsMod.forEach((newRow) => {
+      const index = updated.findIndex(
+        (row) => row.partNo === newRow.partNo
+      );
+
+      if (index !== -1) {
+        // 🔁 UPDATE existing row
+        updated[index] = { ...updated[index], ...newRow };
+      } else {
+        // ➕ ADD new row
+        updated.push(newRow);
+      }
+    });
+
+    return updated;
+  });
+};
     const handleExport = (inventory) => {
         if(inventory.length > 0 ){
         const worksheet = XLSX.utils.json_to_sheet(inventory);
