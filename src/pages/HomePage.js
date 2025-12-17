@@ -2,7 +2,9 @@ import Card from '../components/Card';
 import TopNavBar from '../components/TopNavBar';
 import BottomNavBar from './BottomNavBar';
 import grad from '../graduate_avatar.png';
+import { useEffect } from 'react';
 function HomePage(){
+  
     return(
         <div className="flex justify-center">
       
